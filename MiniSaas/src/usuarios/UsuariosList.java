@@ -3,6 +3,7 @@ package usuarios;
 import java.util.Scanner;
 
 public class UsuariosList {
+	
     public Scanner input = new Scanner(System.in);
 
     public void listarUsuarios(UsuariosForm usuario) /* Significa o mesmo que "UsuariosForm usuario = new UsuariosForm();", porém nos parâmetros do método*/ { 
@@ -11,7 +12,8 @@ public class UsuariosList {
         	System.out.print("id: " + i);
             System.out.print(" | nome: " + usuario.nome[i]);
             System.out.print(" | email: " + usuario.email[i]);
-            System.out.print(" | senha: " + usuario.senha[i] + "\n");
+            System.out.print(" | senha: " + usuario.senha[i]);
+            System.out.println(" | tipo: " + usuario.tipo[i]);
         }
 
         System.out.println("O que deseja fazer? \n [1] Cadastrar novo usuário \n [2] Editar usuário");
@@ -35,6 +37,7 @@ public class UsuariosList {
             }
         } catch (Exception e) {
             System.out.println("Insira um valor válido");
+            listarUsuarios(usuario);
         }
     }
 }
