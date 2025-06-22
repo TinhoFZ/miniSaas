@@ -7,6 +7,8 @@ public class UsuariosForm {
     Scanner input = new Scanner(System.in);
     public static String[] nome = new String[255], senha = new String[255], email = new String[255], tipo = new String[255];
     public static int idUsuarios = 0, escolhaId;
+    // Todos os boolean usados no login
+    public static boolean usuarioExiste, usuarioAdm, usuarioComum;
 
     public void cadastrarUsuario() {
     	
@@ -28,7 +30,6 @@ public class UsuariosForm {
 	        case 1:
 	        	tipo[idUsuarios] = "comum";
 	        	idUsuarios++;
-	        	System.out.println(idUsuarios);
 	        	break;
 	        case 2:
 	        	tipo[idUsuarios] = "adm";
@@ -44,6 +45,29 @@ public class UsuariosForm {
     	}
     }
 
+    public void loginUsuario() {
+        System.out.println("Qual seu email?");
+        String checarEmail = input.nextLine();
+        
+        System.out.println("Qual sua senha?");
+        String checarSenha = input.nextLine();
+        
+        // Vai checar se a senha e email do usuário existem em algum lugar
+        for (int i = 0;i < UsuariosForm.idUsuarios;i ++) {
+        	if (email[i].equals(checarEmail) && senha[i].equals(checarSenha)) {
+        		usuarioExiste = true;
+        		// Vai mudar variáveis dependendo se o usuário é Adm ou Comum
+        		if (tipo[i].equals("adm")) {
+        			usuarioAdm = true;
+        			usuarioComum = false;
+        		} else {
+        			usuarioAdm = false;
+        			usuarioComum = true;
+        		}
+        	}
+        }	
+    }
+    
     // Escolhe qual usuário editar
     public void escolherUsuario()  {
     	

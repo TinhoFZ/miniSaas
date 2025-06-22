@@ -20,8 +20,7 @@ public class HomeList {
 	        switch (escolha) {
 		    // Primeiro o cadastro vai ocorrer e então o código vai continuar para parte de listar
 		    case 1:
-		        usuForm.cadastrarUsuario(); 
-			    usuList.listarUsuarios(home);
+			    usuList.escolherAcao(home);
 			    break;
 		    case 2:
 		        empForm.cadastrarEmpresa();
